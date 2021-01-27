@@ -1,0 +1,81 @@
+int numbers[]={20,40,50,10,30}
+sort (numbers, numbers+5)
+sort (numbers, numbers+5, greater<int>())
+
+list
+advance(it,1) = it++
+mylist.front()
+mylist.back()
+mylist.begin()
+mylist.end() = NULL
+mylist.emplace(x,y)
+mylist.empty() = while !mylist.empty()
+mylist.push_back(value),push_front(value),pop_back(value),pop_front(value)
+mylist.insert(it,value), mylist(it,n,value) = insert ตัวซ้ำ n ตัว
+it = mylist.erase(it) = (1,(2),3,4,5)->(1,(3),4,5)
+mylist.erase(it1,it2) = (10,30,(40),50,(60),80,90)->(10,30,60,80,90)
+mylist2.splice(it,mylist1,mylist1.begin(),mylist1.end()) = เอาค่าใน mylist1 ตั้งแต่ [mylist.begin(),mylist.end()) ไป insert ที่ it ของ mylist2
+mylist.sort()
+
+vector
+myvector.begin()
+myvector.end() = NULL
+myvector.emplace(x,y)
+myvector.push_back(value),pop_back(value)
+myvector.front()
+myvector.back()
+it = myvector.insert(it,value) = ((100),100,100)->((200),100,100,100) (เก็บ it)
+int myarray [] = { 501,502,503 }
+myvector.insert(it, myarray, myarray+3) = ((200),100,100,100)->(501,502,503,200,100,100,100) (it หายเพราะไม่ได้เก็บไว้)
+it = myvector.erase(it) = (1,(2),3,4,5)->(1,(3),4,5)
+myvector.erase(it1,it2) = (10,30,(40),50,(60),80,90)->(10,30,60,80,90)
+myvector.size()
+myvector.clear()
+
+set
+myset.begin()
+myset.end() = NULL
+myset.emplace(x,y)
+myset.empty() = while !myset.empty()
+it=myset.find(value);
+myset.insert(value) = ไม่ insert ค่าซ้ำ
+it = myset.lower_bound (30) = (10,20,(30),40,50) (ไปหา มากกว่าหรือเท่ากับ value)
+it = myset.upper_bound (30) = (10,20,30,(40),50) (ไปหา มากกว่า value)
+it = myset.erase(it) = (1,(2),3,4,5)->(1,(3),4,5)
+myset.erase(it1,it2) = (10,30,(40),50,(60),80,90)->(10,30,60,80,90)
+myset.size()
+myset.clear()
+
+map
+mymap['a']=20
+mymap['b']=40
+mymap['c']=60
+mymap['d']=80
+mymap['e']=100
+mymap.empty() = while !mymap.empty()
+it = mymap.find('a') = (it->first = 'a', it->second = 20)
+it=mymap.lower_bound ('b') = (it->first = 'b', it->second = 40)
+it=mymap.upper_bound ('d') = (it->first = 'e', it->second = 100)
+mymap.size()
+mymap.clear()
+
+queue
+while (!myqueue.empty()){
+  cout << ' ' << myqueue.front();
+  myqueue.pop();
+}
+myqueue.front()
+myqueue.back()
+myqueue.push(value)
+myqueue.pop()
+myqueue.size()
+
+stack
+while (!mystack.empty()){
+   cout << ' ' << mystack.top();
+   mystack.pop();
+}
+mystack.top()
+mystack.push(value)
+mystack.pop()
+mystack.size()
