@@ -8,7 +8,8 @@ mylist.front()
 mylist.back()
 mylist.begin()
 mylist.end() = NULL
-mylist.emplace(x,y)
+mylist.emplace(it,x,y)
+mylist.emplace_back(x,y)
 mylist.empty() = while !mylist.empty()
 mylist.push_back(value),push_front(value),pop_back(value),pop_front(value)
 mylist.insert(it,value), mylist(it,n,value) = insert ตัวซ้ำ n ตัว
@@ -54,7 +55,7 @@ mymap['d']=80
 mymap['e']=100
 mymap.empty() = while !mymap.empty()
 it = mymap.find('a') = (it->first = 'a', it->second = 20)
-it=mymap.lower_bound ('b') = (it->first = 'b', it->second = 40)
+it=mymapp.lower_bound ('b') = (it->first = 'b', it->second = 40)
 it=mymap.upper_bound ('d') = (it->first = 'e', it->second = 100)
 mymap.size()
 mymap.clear()

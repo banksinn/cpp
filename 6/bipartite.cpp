@@ -5,7 +5,7 @@ const int MAX_N = 100100;
 
 vector<int> adj[MAX_N];
 int deg[MAX_N];
-int n,m;
+int n,m,ans=0;
 
 void init_input(){
     for (int i=0; i<MAX_N; i++){
@@ -31,6 +31,7 @@ bool discovered[MAX_N];
 int mark[MAX_N];
 
 void init_BFS(){
+    ans = 0;
     for (int i=0; i<MAX_N; i++){
         discovered[i] = false;
     }
@@ -49,6 +50,10 @@ void bfs(int s){
                 Q.push(v);
                 discovered[v] = true;
                 mark[v] = (mark[U]==0) ? 1:0;
+            }
+            else if (discovered[v] && (mark[U]==mark[v])){
+                ans = 1;
+                break;
             }
         }
     }
@@ -80,11 +85,11 @@ int main(){
                 bfs(j);
             }
         }
-        if (bipartite()){
-            cout << "yes\n";
+        if (ans){
+            cout << "no\n";
         }
         else{
-            cout << "no\n";
+            cout << "yes\n";
         }
     }
     return 0;

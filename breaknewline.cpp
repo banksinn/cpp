@@ -7,7 +7,7 @@ int main(){
         stringstream ss(start);
         string s, t;
         ss >> s >> t;
-        cout << "output: "<< s << " " << t << "\n";
+        cout << "output: "<< s << "\n";
     }
     return 0;
 }
