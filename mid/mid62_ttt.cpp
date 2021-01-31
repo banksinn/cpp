@@ -5,7 +5,9 @@ const int MAX_N = 3010;
 
 vector<int> adj[MAX_N];
 int deg[MAX_N];
-int n,m;
+int n,m,bipartite;
+list<pair<int,int>> keep;
+bool err[MAX_N];
 
 void read_input(){
     int x,y;
@@ -15,83 +17,62 @@ void read_input(){
         x--; y--;
         adj[x].push_back(y);
         adj[y].push_back(x);
+        keep.emplace_back(x,y);
         deg[x]++;
         deg[y]++;
     }
 }
 
-bool visited[MAX_N];
-int color[MAX_N];
-bool err[MAX_N][MAX_N];
+bool discovered[MAX_N];
+int mark[MAX_N];
 
-int ans;
-
-void init_DFS(){
+void init_BFS(){
+    bipartite = 1;
     for (int i=0; i<MAX_N; i++){
-        visited[i] = false;
-        color[i] = 0;
-    }
-    for (int i=0; i<MAX_N; i++){
-        for (int j=0; j<MAX_N; j++){
-            err[i][j] = false;
-        }
+        discovered[i] = false;
+        err[i] = false;
+        mark[i] = 0;
     }
 }
 
-void dfs_bipartite(int U, int c){
-    if (visited[U]){
-        if (color[U]!=c){
-            ans = 1;
-        }
-        return;
-    }
-    visited[U] = true;
-    color[U] = c;
-    for (int d=0; d<deg[U]; d++){
-        int v = adj[U][d];
-        if (c==1){
-            dfs_bipartite(v,0);
-        }
-        else{
-            dfs_bipartite(v,1);
+void bfs(int s){
+    discovered[s] = true;
+    queue<int> Q;
+    Q.push(s);
+    while (!Q.empty()){
+        int U = Q.front();
+        Q.pop();
+        for (int d=0; d<deg[U]; d++){
+            int v = adj[U][d];
+            if (err[U]==true && err[v]==true){
+                continue;
+            }
+            if (!discovered[v]){
+                Q.push(v);
+                discovered[v] = true;
+                mark[v] = (mark[U]==0) ? 1:0;
+            }
+            else if (discovered[v] && (mark[U]==mark[v])){
+                bipartite = 0;
+                break;
+            }
         }
     }
 }
 
 int main(){
-    int ans_x,ans_y,check=0;
     read_input();
-    for (int i=0; i<n; i++){
-        for (int d=0; d<deg[i]; d++){
-            int node = adj[i][d];
-            //cout << "Node: " << node << "\n";
-            init_DFS();
-            err[i][d] = true;
-            for (int j=0; j<deg[node]; j++){
-                if (adj[node][j]==i){
-                    err[node][j] = true;
-                }
-            }
-            for (int j=0; j<n; j++){
-                if (!visited[j]){
-                    dfs_bipartite(j,0);
-                }
-            }
-            /*cout << "Mark: ";
-            for (int j=0; j<n; j++){
-                cout << mark[j] << " ";
-            }
-            cout << "\nBipartite: " << bipartite(node) << "\n";*/
-            if (ans){
-                check = 1;
-                ans_x = i;
-                ans_y = node;
-            }
+    for (auto i=keep.begin(); i!=keep.end(); i++){
+        init_BFS();
+        err[i->first] = true;
+        err[i->second] = true;
+        for (int j=0; j<n; j++){
+            bfs(j);
         }
-        if (check){
+        if (bipartite){
+            cout << i->first+1 << " " << i->second+1;
             break;
         }
     }
-    cout << ans_x+1 << " " << ans_y+1;
     return 0;
 }
