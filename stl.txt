@@ -13,7 +13,7 @@ mylist.emplace_back(x,y)
 mylist.empty() = while !mylist.empty()
 mylist.push_back(value),push_front(value),pop_back(value),pop_front(value)
 mylist.insert(it,value), mylist(it,n,value) = insert ตัวซ้ำ n ตัว
-it = mylist.erase(it) = (1,(2),3,4,5)->(1,(3),4,5)
+mylist.erase(it) = (1,(2),3,4,5)->(1,(2),3,4,5)
 mylist.erase(it1,it2) = (10,30,(40),50,(60),80,90)->(10,30,60,80,90)
 mylist2.splice(it,mylist1,mylist1.begin(),mylist1.end()) = เอาค่าใน mylist1 ตั้งแต่ [mylist.begin(),mylist.end()) ไป insert ที่ it ของ mylist2
 mylist.sort()
