@@ -1,7 +1,7 @@
 #include <bits/stdc++.h>
 using namespace std;
 
-const int MAX_N = 1010;
+const int MAX_N = 10100;
 
 int n;
 int patient[MAX_N];

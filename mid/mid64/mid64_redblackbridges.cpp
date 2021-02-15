@@ -1,7 +1,7 @@
 #include <bits/stdc++.h>
 using namespace std;
 
-const int MAX_N = 200010;
+const int MAX_N = 300010;
 
 vector<int> adj1[MAX_N],adj2[MAX_N];
 int deg1[MAX_N],deg2[MAX_N];
