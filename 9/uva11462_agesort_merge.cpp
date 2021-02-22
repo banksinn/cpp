@@ -33,6 +33,7 @@ void MergeSort(int L, int R){
         arr[i] = sort_arr[i];
     return;
 }
+
 int main(){
     ios::sync_with_stdio(false);
     cin.tie(NULL);
