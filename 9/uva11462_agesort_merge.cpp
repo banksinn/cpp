@@ -13,24 +13,30 @@ void init_array(){
 }
 
 void MergeSort(int L, int R){
-    if(L == R)
+    if(L == R){
         return;
+    }
     int mid = (L+R)/2;
     MergeSort(L, mid);
     MergeSort(mid+1, R);
     int i = L, j = mid+1, idx = L;
     while(i <= mid && j <= R){
-        if(arr[i] <= arr[j])
+        if(arr[i] <= arr[j]){
             sort_arr[idx++] = arr[i++];
-        else if(arr[i] > arr[j])
+        }
+        else if(arr[i] > arr[j]){
             sort_arr[idx++] = arr[j++];
+        }
     }
-    while(i <= mid)
+    while(i <= mid){
         sort_arr[idx++] = arr[i++];
-    while(j <= R)
+    }
+    while(j <= R){
         sort_arr[idx++] = arr[j++];
-    for(int i = L; i <= R; ++i)
+    }
+    for(int i = L; i <= R; ++i){
         arr[i] = sort_arr[i];
+    }
     return;
 }
 
@@ -49,7 +55,6 @@ int main(){
             }
             else{
                 cout << arr[i] << " ";
-
             }
         }
         cout << "\n";
