@@ -21,7 +21,7 @@ void MergeSort_inversion(int L, int R){
         }
         else if(arr[i] > arr[j]){
             sort_arr[idx++] = arr[j++];
-            ans+=mid-i+1;
+            ans+=mid-i+1; //เพิ่มบรรทัดนี้ จาก merge sort นับ inversion
         }
     }
     while(i <= mid){
